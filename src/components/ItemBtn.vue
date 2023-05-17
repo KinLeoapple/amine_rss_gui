@@ -17,7 +17,7 @@ export default {
             btn.onclick = () => {
                 [].forEach.call(btn.parentNode.children, item => {
                     let dom = item.querySelector('i');
-                    try {
+                    if (dom !== null) {
                         let classVal = dom.getAttribute('class').trim();
 
                         if (classVal !== currentClassVal) {
@@ -33,8 +33,6 @@ export default {
                             item.style.marginLeft = '-20px';
                             dom.style.color = 'white';
                         }
-                    } catch (err) {
-                        console.log(err)
                     }
                 });
             }

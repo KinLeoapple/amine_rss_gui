@@ -2,8 +2,8 @@
     <div ref="nav" class="nav">
         <img class="icon" draggable="false" src="@/assets/img/logo.jpg" alt=""/>
         <item-btn id="files" ref="files" @click="openFiles()" class-val="bi bi-folder2"/>
+        <item-btn id="downloads" ref="downloads" @click="openAppends()" class-val="bi bi-view-stacked"/>
         <item-btn id="downloads" ref="downloads" @click="openDownloads()" class-val="bi bi-cloud-arrow-down"/>
-        <item-btn id="downloads" ref="downloads" @click="openAppends()" class-val="bi bi-plus-circle"/>
         <item-btn id="search" ref="search" @click="openSearch()" class-val="bi bi-search"/>
         <item-btn id="setting" ref="setting" @click="openSetting()" class-val="bi bi-gear"/>
     </div>

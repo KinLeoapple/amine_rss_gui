@@ -4,6 +4,7 @@
     </header>
     <main>
         <side-bar/>
+        <file-window/>
     </main>
 </template>
 
@@ -11,10 +12,12 @@
 
 import TitleBar from "@/components/TitleBar.vue";
 import SideBar from "@/components/SideBar.vue";
+import FileWindow from "@/components/FileWindow.vue";
 
 export default {
     name: 'App',
     components: {
+        FileWindow,
         SideBar,
         TitleBar
     }
@@ -55,6 +58,9 @@ header {
 main {
     width: 100%;
     height: 100%;
-    /*margin-top: 90px;*/
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
 }
 </style>
