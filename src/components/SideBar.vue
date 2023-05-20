@@ -15,11 +15,6 @@ import ItemBtn from "@/components/ItemBtn.vue";
 export default {
     name: "SideBar",
     components: {ItemBtn},
-    mounted() {
-        this.$nextTick(() => {
-            document.getElementById('files').click();
-        });
-    }
 }
 </script>
 

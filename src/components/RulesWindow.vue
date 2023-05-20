@@ -9,7 +9,9 @@ import axios from "axios";
 export default {
   name: "RulesWindow",
   mounted() {
-    this.getAllRules();
+    this.$nextTick(() => {
+      this.getAllRules();
+    });
   },
   methods: {
     getAllRules() {

@@ -11,17 +11,19 @@ let webSocketService = new WebsocketService()
 let files = []
 
 export default {
-  name: "FileWindow",
+  name: "FilesWindow",
   mounted() {
-    webSocketService.connect("ws://localhost:5000/files");
+    this.$nextTick(() => {
+      webSocketService.connect("ws://localhost:5000/files");
 
-    webSocketService.messageSubject.subscribe(data => {
-      if (data.OK === "OK") {
-        webSocketService.send("G:\\Amine\\");
-      } else if (data.files !== undefined) {
-        files = data.files;
-        this.renderFiles();
-      }
+      webSocketService.messageSubject.subscribe(data => {
+        if (data.OK === "OK") {
+          webSocketService.send("G:\\Amine\\");
+        } else if (data.files !== undefined) {
+          files = data.files;
+          this.renderFiles();
+        }
+      });
     });
   },
   methods: {
