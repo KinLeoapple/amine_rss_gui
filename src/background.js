@@ -16,10 +16,11 @@ let win
 async function createWindow() {
     // Create the browser window.
     win = new BrowserWindow({
-        width: 800,
+        width: 850,
         height: 600,
         titleBarStyle: 'hidden',
         frame: false,
+        resizable: false,
         webPreferences: {
 
             // Use pluginOptions.nodeIntegration, leave this alone
