@@ -5,7 +5,7 @@
 
 <script>
 import {WebsocketService} from "@/assets/js/WebSocket";
-import axios from "axios";
+import {AxiosRequest} from "@/assets/js/AxiosRequest";
 
 let webSocketService = new WebsocketService()
 let files = []
@@ -14,7 +14,7 @@ export default {
   name: "FilesWindow",
   mounted() {
     this.$nextTick(() => {
-      webSocketService.connect("ws://localhost:5000/files");
+      webSocketService.connect("ws://localhost:8000/files");
 
       webSocketService.messageSubject.subscribe(data => {
         if (data.OK === "OK") {
@@ -27,7 +27,7 @@ export default {
     });
   },
   methods: {
-    renderFiles() {
+    async renderFiles() {
       let fileWindow = document.getElementById("file-window");
       files.forEach(file => {
         let arr = file.root.toString().split("/")
@@ -58,13 +58,12 @@ export default {
       });
     },
     async getFileCover(root, name) {
-      axios({
-        method: "post",
-        baseURL: "http://localhost:5000/file_cover/",
-        data: {
-          path: root + name
-        }
-      }).then(resp => {
+      new AxiosRequest().post(
+          "http://localhost:8000/file_cover/",
+          {
+            path: root + name
+          }
+      ).then(resp => {
         let data = resp.data;
         let fileDom = document.querySelector(`[file-name="${name}"]`);
         fileDom.querySelector(".file-bg").style.backgroundImage = `url("data:image/jpeg;base64,${data}")`;
